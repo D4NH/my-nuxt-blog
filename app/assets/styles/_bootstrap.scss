@@ -1,0 +1,21 @@
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/functions";
+
+// Override variables
+$primary: #88c441;
+$body-bg-dark: #0f1216;
+$body-color-dark: #e6edf3;
+
+@import "bootstrap/scss/variables";
+
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";

@@ -14,8 +14,11 @@
     "@nuxt/eslint": "^1.17.0",
     "@nuxt/icon": "^2.5.0",
     "@nuxt/image": "^2.1.0",
+    "@popperjs/core": "^2.11.8",
+    "@vueuse/core": "^14.4.0",
     "@vueuse/nuxt": "^14.4.0",
     "better-sqlite3": "^12.11.1",
+    "bootstrap": "^5.3.8",
     "eslint": "^10.8.1",
     "nuxt": "^4.5.2",
     "nuxt-gtag": "^5.0.0",
@@ -30,6 +33,8 @@
     "@parcel/watcher@2.6.0": true
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.2.11",
+    "@types/node": "^26.2.0",
     "sass": "^1.102.0"
   }
 }

@@ -1,0 +1,39 @@
+// Token,Light Mode (Current),Dark Mode Recommended,Rationale / Purpose
+// Base Canvas,#ffffff,#0f1216,Soft deep charcoal slate (prevents pure #000 harshness while keeping high depth).
+// Card / Surface,#ffffff / #f8f9fa,#161b22,"Slightly elevated surface for travel cards, bio panel, and nav background."
+// Surface Hover,#e9ecef,#21262d,Interactive hover state for cards and list items.
+// Borders & Rules,#dee2e6 / <hr>,#30363d,"Low-contrast borders for card frames, horizontal rules, and nav dividers."
+// Body Text Primary,#212529,#e6edf3,~90% off-white text to reduce glare while staying crisp.
+// Text Muted / Subtitles,#6c757d,#8b949e,"Secondary text for dates, locations, and footer copyright."
+// Primary Accent,#88c441,#88c441,Keeps your signature green intact for main branding/headings.
+// Link Hover / Focus,#76ac37,#a3e059,"Slightly brighter, vibrant green variant so hover states stand out against dark backgrounds."
+
+// Brand colors
+// $text: #e6edf3;
+// $text-muted: #e6edf3;
+// $text-link: #88c441;
+// $text-link-hover: #a3e059;
+
+// Colors
+$brand-primary: #88c441;
+$brand-primary-hover-dark: #99d452;
+
+// Light Theme Tokens
+$theme-light: (
+    bg-main: #ffffff,
+    bg-surface: #f8f9fa,
+    border: #e9ecef,
+    text-main: #212529,
+    text-muted: #6c757d,
+    primary: $brand-primary
+);
+
+// Dark Theme Tokens
+$theme-dark: (
+    bg-main: #0f1216,
+    bg-surface: #161b22,
+    border: #30363d,
+    text-main: #e6edf3,
+    text-muted: #8b949e,
+    primary: $brand-primary
+);

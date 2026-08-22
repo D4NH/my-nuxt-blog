@@ -41,9 +41,6 @@ export default defineNuxtConfig({
             solid: ['map-marker-alt', 'arrow-right', 'calendar', 'calendar-day'],
         },
     },
-    image: {
-        provider: 'ipx',
-    },
     tailwindcss: {
         config: {
             darkMode: 'class',

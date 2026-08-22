@@ -42,7 +42,7 @@ export default defineNuxtConfig({
         },
     },
     image: {
-        provider: 'none',
+        provider: 'ipx',
     },
     tailwindcss: {
         config: {

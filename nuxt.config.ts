@@ -41,6 +41,12 @@ export default defineNuxtConfig({
             solid: ['map-marker-alt', 'arrow-right', 'calendar', 'calendar-day'],
         },
     },
+    image: {
+        provider: 'cloudflare',
+        cloudflare: {
+            baseURL: 'https://danhs-blog.pages.dev',
+        },
+    },
     tailwindcss: {
         config: {
             darkMode: 'class',

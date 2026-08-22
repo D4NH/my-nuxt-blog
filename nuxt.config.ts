@@ -42,10 +42,7 @@ export default defineNuxtConfig({
         },
     },
     image: {
-        provider: 'cloudflare',
-        cloudflare: {
-            baseURL: 'https://danhs-blog.pages.dev',
-        },
+        provider: 'none',
     },
     tailwindcss: {
         config: {

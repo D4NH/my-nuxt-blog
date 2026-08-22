@@ -8,32 +8,17 @@
 // Primary Accent,#88c441,#88c441,Keeps your signature green intact for main branding/headings.
 // Link Hover / Focus,#76ac37,#a3e059,"Slightly brighter, vibrant green variant so hover states stand out against dark backgrounds."
 
-// Brand colors
-// $text: #e6edf3;
-// $text-muted: #e6edf3;
-// $text-link: #88c441;
-// $text-link-hover: #a3e059;
-
-// Colors
+// Brand Base Palette
 $brand-primary: #88c441;
-$brand-primary-hover-dark: #99d452;
+$brand-primary-hover: #77b330;
 
-// Light Theme Tokens
-$theme-light: (
-    bg-main: #ffffff,
-    bg-surface: #f8f9fa,
-    border: #e9ecef,
-    text-main: #212529,
-    text-muted: #6c757d,
-    primary: $brand-primary
-);
-
-// Dark Theme Tokens
-$theme-dark: (
+$theme: (
+    primary: $brand-primary,
+    primary-hover: $brand-primary-hover,
     bg-main: #0f1216,
     bg-surface: #161b22,
-    border: #30363d,
+    bg-surface-hover: #21262d,
     text-main: #e6edf3,
     text-muted: #8b949e,
-    primary: $brand-primary
+    border: #30363d,
 );

@@ -160,7 +160,7 @@ const randomizedPosts = computed(() => {
                     loading="lazy"
                     quality="80"
                     :placeholder="[312, 175, 75, 5]"
-                    class="w-full object-cover [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-110" />
+                    class="w-full object-cover [mask-image:linear-gradient(to_bottom,black_25%,transparent_100%)] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-110" />
                 <div class="absolute bottom-0 inset-x-0 p-3">
                     <h3 class="text-white font-medium truncate">
                         <fa-icon

@@ -119,7 +119,6 @@ const randomizedPosts = computed(() => {
                             :alt="`${post.title} photo ${image.id}`"
                             format="webp"
                             loading="lazy"
-                            quality="80"
                             :placeholder="[672, 525, 75, 5]"
                             class="rounded-lg [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
                     </Slide>
@@ -143,10 +142,20 @@ const randomizedPosts = computed(() => {
             <p class="text-sm text-neutral-400 ml-3">{{ post.description }}</p>
         </div>
 
-        <h1 class="text-3xl font-medium mt-24 uppercase">Other trips</h1>
+        <div class="flex justify-between">
+            <h1 class="text-3xl font-medium mt-24 mb-6 uppercase">Other Destinations</h1>
+            <NuxtLink
+                class="text-right self-end mb-6"
+                to="/travel">
+                View all
+                <fa-icon
+                    class="ml-1"
+                    icon="arrow-right" />
+            </NuxtLink>
+        </div>
         <div
             v-if="randomizedPosts"
-            class="grid grid-cols-2 gap-4 mt-6">
+            class="grid grid-cols-2 gap-4">
             <NuxtLink
                 v-for="item in randomizedPosts"
                 :key="item.path"

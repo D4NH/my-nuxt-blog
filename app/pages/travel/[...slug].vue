@@ -114,7 +114,7 @@ const randomizedPosts = computed(() => {
                     <Slide
                         v-for="image in post.images"
                         :key="image.id">
-                        <NuxtImg
+                        <img
                             :src="image.url"
                             :alt="`${post.title} photo ${image.id}`"
                             class="rounded-lg [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
@@ -148,7 +148,7 @@ const randomizedPosts = computed(() => {
                 :key="item.path"
                 :to="`/travel/${item.path.split('/')[2]}`"
                 class="group relative block w-full overflow-hidden rounded-lg bg-neutral-900">
-                <NuxtImg
+                <img
                     v-if="item.image"
                     :src="item.image"
                     :alt="item.category"

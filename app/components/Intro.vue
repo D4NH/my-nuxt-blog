@@ -3,7 +3,7 @@
 <template>
     <div class="intro mx-auto">
         <div class="flex items-center gap-x-4 mt-12 mb-24">
-            <NuxtImg
+            <img
                 format="webp"
                 loading="lazy"
                 quality="80"

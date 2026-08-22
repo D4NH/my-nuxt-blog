@@ -78,7 +78,7 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
                 :key="post.title"
                 :to="`/travel/${post.path.split('/')[2]}`"
                 class="group relative block w-full overflow-hidden rounded-lg">
-                <NuxtImg
+                <img
                     :src="post.image"
                     :alt="`Picture of ${post.category}`"
                     height="175"

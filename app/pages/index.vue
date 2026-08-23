@@ -103,7 +103,7 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
             <div class="rounded-lg bg-white/5 p-6">
                 <NuxtLink
                     class="font-semibold text-white"
-                    to="/about/"
+                    to="https://www.instagram.com/danhnguyen.nl"
                     target="_blank">
                     <fa-icon
                         class="mr-1"
@@ -115,7 +115,7 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
             <div class="rounded-lg bg-white/5 p-6">
                 <NuxtLink
                     class="font-semibold text-white"
-                    to="/about/"
+                    to="https://www.linkedin.com/in/nguyendtd/"
                     target="_blank">
                     <fa-icon
                         class="mr-1"
@@ -127,7 +127,7 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
             <div class="rounded-lg bg-white/5 p-6">
                 <NuxtLink
                     class="font-semibold text-white"
-                    to="/about/"
+                    to="https://www.tiktok.com/@pho.db"
                     target="_blank">
                     <fa-icon
                         class="mr-1"

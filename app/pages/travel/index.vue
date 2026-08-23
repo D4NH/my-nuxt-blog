@@ -7,6 +7,10 @@ const { data: allPosts } = await useAsyncData(route.path, () =>
         .order('date', 'DESC')
         .all()
 );
+
+useHead({
+    title: 'Travel | Danh Nguyen',
+});
 </script>
 
 <template>

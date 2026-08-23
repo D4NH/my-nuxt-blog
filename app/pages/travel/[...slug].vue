@@ -62,27 +62,20 @@ const { data: pageData } = await useAsyncData(`category-${route.path}`, async ()
     };
 });
 
-function shuffleArray<T>(array: T[]): T[] {
-    const shuffled = [...array];
+useHead({
+    title: `${pageData.value?.introPost?.category} | Danh Nguyen`,
+});
 
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-
-        const current = shuffled[i];
-        const target = shuffled[j];
-
-        if (current !== undefined && target !== undefined) {
-            shuffled[i] = target;
-            shuffled[j] = current;
-        }
+const randomizedPosts = ref<any[]>([]);
+watchEffect(() => {
+    if (pageData.value?.allPosts) {
+        randomizedPosts.value = pageData.value.allPosts;
     }
-
-    return shuffled;
-}
-
-const randomizedPosts = computed(() => {
-    if (!pageData.value?.allPosts) return [];
-    return shuffleArray(pageData.value.allPosts);
+});
+onMounted(() => {
+    if (randomizedPosts.value.length) {
+        randomizedPosts.value = shuffleArray(randomizedPosts.value);
+    }
 });
 </script>
 

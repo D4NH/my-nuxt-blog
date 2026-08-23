@@ -10,6 +10,10 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
         .limit(4)
         .all()
 );
+
+useHead({
+    title: 'Danh Nguyen | Frontend Developer',
+});
 </script>
 
 <template>

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useHead({
+    title: 'About me | Danh Nguyen',
+});
+</script>
+
 <template>
     <div class="grid grid-cols-1">
         <Intro>

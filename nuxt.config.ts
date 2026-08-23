@@ -11,6 +11,9 @@ export default defineNuxtConfig({
         '@vesp/nuxt-fontawesome',
         'vue3-carousel-nuxt',
     ],
+    app: {
+        pageTransition: { name: 'page', mode: 'out-in' },
+    },
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
     future: {
@@ -39,6 +42,7 @@ export default defineNuxtConfig({
         suffix: true,
         icons: {
             solid: ['map-marker-alt', 'arrow-right', 'calendar', 'calendar-day'],
+            brands: ['instagram', 'tiktok', 'linkedin'],
         },
     },
     tailwindcss: {

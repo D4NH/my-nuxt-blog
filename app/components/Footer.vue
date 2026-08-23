@@ -5,9 +5,7 @@ const getCurrentYear = () => new Date().getFullYear();
 <template>
     <footer class="container mx-auto mt-12 mb-6 pt-6">
         <div class="grid grid-cols-1">
-            <p class="text-center">
-                © 2017 - {{ getCurrentYear() }} Copyright Danh Nguyen | Frontend Developer
-            </p>
+            <p class="text-center">© {{ getCurrentYear() }} - Danh Nguyen | Frontend Developer</p>
         </div>
     </footer>
 </template>

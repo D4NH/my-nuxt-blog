@@ -12,15 +12,15 @@ const { data: allPosts } = await useAsyncData(route.path, () =>
 <template>
     <div class="grid grid-cols-1">
         <Intro>
-            <h1 class="text-3xl font-medium mb-6 uppercase">Travel</h1>
+            <h1 class="text-2xl font-medium mt-14 mb-6 uppercase">Travel</h1>
             <p class="mx-auto">
-                I love traveling, exploring new places, soaking in local cultures and trying new
-                things wherever I go. Check out my recent trips and adventures on this page and feel
-                free to reach out if you want to share travel recommendations or swap stories.
+                I love traveling, exploring new places, soaking in local cultures and trying new things wherever I go.
+                Check out my recent trips and adventures on this page and feel free to reach out if you want to share
+                travel recommendations or swap stories.
             </p>
         </Intro>
 
-        <h1 class="text-3xl font-medium mt-24 mb-6 uppercase">Destinations</h1>
+        <h1 class="text-2xl font-medium mt-16 mb-6 uppercase">Destinations</h1>
         <div class="grid grid-cols-2 gap-4">
             <NuxtLink
                 v-for="post in allPosts"

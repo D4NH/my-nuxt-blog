@@ -2,7 +2,7 @@
 
 <template>
     <div class="intro mx-auto">
-        <div class="flex items-center gap-x-4 mt-12 mb-24">
+        <div class="flex items-center gap-x-4 mt-10">
             <NuxtImg
                 format="webp"
                 :placeholder="[100, 100, 75, 5]"

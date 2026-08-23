@@ -15,15 +15,14 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
 <template>
     <div class="grid grid-cols-1">
         <Intro>
-            <h1 class="text-3xl font-medium mb-6 uppercase">About</h1>
+            <h1 class="text-2xl font-medium mt-14 mb-6 uppercase">About</h1>
             <p class="mx-auto">
-                Tech enthusiast, web developer and gadget collector. I moved from the Netherlands to
-                Indonesia in 2025 and spend most of my free time playing badminton, gaming,
-                traveling or reading manga.
+                Tech enthusiast, web developer and gadget collector. I moved from the Netherlands to Indonesia in 2025
+                and spend most of my free time playing badminton, gaming, traveling or reading manga.
             </p>
         </Intro>
 
-        <h1 class="text-3xl font-medium mt-24 mb-6 uppercase">Work experience</h1>
+        <h1 class="text-2xl font-medium mt-16 mb-6 uppercase">Work experience</h1>
         <ul class="space-y-6">
             <li class="md:grid grid-cols-[100px_1fr_auto] gap-4">
                 <time class="text-sm text-neutral-400">2020 - 2025</time>
@@ -62,7 +61,7 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
         </ul>
 
         <div class="flex justify-between">
-            <h1 class="text-3xl font-medium mt-24 mb-6 uppercase">Travel</h1>
+            <h1 class="text-2xl font-medium mt-16 mb-6 uppercase">Travel</h1>
             <NuxtLink
                 class="text-right self-end mb-6"
                 to="/travel">
@@ -97,6 +96,46 @@ const { data: travelPosts } = await useAsyncData(route.path, () =>
                     <time class="text-xs text-neutral-400 uppercase mt-1">{{ post.date }}</time>
                 </div>
             </NuxtLink>
+        </div>
+
+        <h1 class="text-2xl font-medium mt-16 mb-6 uppercase">Contact</h1>
+        <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="rounded-lg bg-white/5 p-6">
+                <NuxtLink
+                    class="font-semibold text-white"
+                    to="/about/"
+                    target="_blank">
+                    <fa-icon
+                        class="mr-1"
+                        :icon="['fab', 'instagram']" />
+                    Instagram
+                </NuxtLink>
+                <div class="text-gray-500 mt-1">danhnguyen.nl</div>
+            </div>
+            <div class="rounded-lg bg-white/5 p-6">
+                <NuxtLink
+                    class="font-semibold text-white"
+                    to="/about/"
+                    target="_blank">
+                    <fa-icon
+                        class="mr-1"
+                        :icon="['fab', 'linkedin']" />
+                    LinkedIn
+                </NuxtLink>
+                <div class="text-gray-500 mt-1">nguyendtd</div>
+            </div>
+            <div class="rounded-lg bg-white/5 p-6">
+                <NuxtLink
+                    class="font-semibold text-white"
+                    to="/about/"
+                    target="_blank">
+                    <fa-icon
+                        class="mr-1"
+                        :icon="['fab', 'tiktok']" />
+                    Tiktok
+                </NuxtLink>
+                <div class="text-gray-500 mt-1">PhoDB</div>
+            </div>
         </div>
     </div>
 </template>

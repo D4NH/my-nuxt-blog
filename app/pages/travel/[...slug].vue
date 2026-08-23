@@ -30,10 +30,7 @@ const { data: pageData } = await useAsyncData(`category-${route.path}`, async ()
         return { introPost, fullPosts: [] };
     }
 
-    const singlePost = await queryCollection('travel')
-        .where('path', 'IN', paths)
-        .order('date', 'ASC')
-        .all();
+    const singlePost = await queryCollection('travel').where('path', 'IN', paths).order('date', 'ASC').all();
 
     const images = singlePost.map((post) => {
         let imageUrls: string[] = [];
@@ -43,9 +40,7 @@ const { data: pageData } = await useAsyncData(`category-${route.path}`, async ()
         } else if (post.body?.value) {
             imageUrls = post.body.value.flatMap((node: any) => {
                 const child = node?.[2];
-                return Array.isArray(child) && child[0] === 'img' && child[1]?.src
-                    ? [child[1].src]
-                    : [];
+                return Array.isArray(child) && child[0] === 'img' && child[1]?.src ? [child[1].src] : [];
             });
         }
 
@@ -94,7 +89,7 @@ const randomizedPosts = computed(() => {
 <template>
     <div class="grid grid-cols-1">
         <Intro class="w-full mb-24">
-            <h1 class="text-3xl font-medium mb-6 uppercase">
+            <h1 class="text-2xl font-medium mt-14 mb-6 uppercase">
                 {{ pageData?.introPost?.category }}
             </h1>
             <p>
@@ -143,7 +138,7 @@ const randomizedPosts = computed(() => {
         </div>
 
         <div class="flex justify-between">
-            <h1 class="text-3xl font-medium mt-24 mb-6 uppercase">Other Destinations</h1>
+            <h1 class="text-2xl font-medium mt-16 mb-6 uppercase">Other Destinations</h1>
             <NuxtLink
                 class="text-right self-end mb-6"
                 to="/travel">

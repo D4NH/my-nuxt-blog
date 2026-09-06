@@ -11,7 +11,6 @@ const cleanPath = computed(() => {
 
     rawPath = rawPath.replace(/\/$/, '') || '/';
 
-    // Ensure path starts with /travel to match content/travel structure
     if (!rawPath.startsWith('/travel')) {
         rawPath = `/travel${rawPath}`;
     }
@@ -25,51 +24,88 @@ const { data: pageData } = await useAsyncData(`travel-page-${cleanPath.value}`, 
         .order('date', 'ASC')
         .all();
 
-    let introPost = singlePost[0] || null;
-
-    if (!introPost) {
-        introPost = await queryCollection('travel').path(cleanPath.value).first();
+    if (!singlePost.length) {
+        return { introPost: null, singlePost: [], images: [], destinationCategories: [] };
     }
 
-    if (!introPost && !singlePost.length) {
-        return { introPost: null, singlePost: [], images: [], allPosts: [] };
-    }
+    const introPost = singlePost[0];
 
     const images = singlePost.map((post) => {
         let imageUrls: string[] = [];
 
         if (Array.isArray(post.images) && typeof post.images[0] === 'string') {
             imageUrls = post.images as string[];
-        } else if (post.image) {
-            imageUrls = [post.image];
+        } else if (post.body?.value) {
+            imageUrls = post.body.value.flatMap((node: any) => {
+                const child = node?.[2];
+                return Array.isArray(child) && child[0] === 'img' && child[1]?.src
+                    ? [child[1].src]
+                    : [];
+            });
         }
 
         return {
             ...post,
             images: imageUrls.map((url, index) => ({
                 id: index + 1,
-                url,
+                url: url.startsWith('/') ? url : `/${url}`,
             })),
         };
     });
 
-    const allPosts = await queryCollection('travel')
+    const candidatePosts = await queryCollection('travel')
         .where('path', 'NOT LIKE', `${cleanPath.value}/%`)
         .order('date', 'ASC')
-        .limit(4)
         .all();
+
+    const destinationMap = new Map<string, any>();
+
+    for (const post of candidatePosts) {
+        const pathSegments = post.path.split('/').filter(Boolean);
+        if (pathSegments.length >= 2) {
+            const parentFolderPath = `/${pathSegments[0]}/${pathSegments[1]}`;
+
+            if (!destinationMap.has(parentFolderPath)) {
+                destinationMap.set(parentFolderPath, {
+                    path: parentFolderPath,
+                    category: post.category,
+                    date: post.date,
+                    image: post.image
+                        ? post.image.startsWith('/')
+                            ? post.image
+                            : `/${post.image}`
+                        : '',
+                });
+            }
+        }
+    }
 
     return {
         introPost,
         singlePost,
         images,
-        allPosts,
+        destinationCategories: Array.from(destinationMap.values()),
     };
 });
 
+const shuffleArray = <T,>(array: T[]): T[] => {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+};
+
+watchEffect(() => {
+    if (pageData.value?.destinationCategories) {
+        randomizedPosts.value = pageData.value.destinationCategories.slice(0, 4);
+    }
+});
+
 onMounted(() => {
-    if (pageData.value?.allPosts?.length) {
-        randomizedPosts.value = shuffleArray([...pageData.value.allPosts]);
+    if (pageData.value?.destinationCategories?.length) {
+        randomizedPosts.value = shuffleArray(pageData.value.destinationCategories).slice(0, 4);
     }
 });
 
@@ -115,10 +151,8 @@ useHead({
                                     class="rounded-lg [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
                             </Slide>
                             <template #addons>
-                                <ClientOnly>
-                                    <Navigation class="m-4" />
-                                    <Pagination />
-                                </ClientOnly>
+                                <Navigation class="m-4" />
+                                <Pagination />
                             </template>
                         </Carousel>
                         <div class="absolute bottom-0 inset-x-0 p-3">
@@ -154,7 +188,7 @@ useHead({
                         v-for="item in randomizedPosts"
                         :key="item.path"
                         :to="item.path"
-                        class="group relative block w-full overflow-hidden rounded-lg bg-neutral-900">
+                        class="group relative block w-full overflow-hidden rounded-lg bg-neutral-900 h-[175px]">
                         <NuxtImg
                             v-if="item.image"
                             :src="item.image"
@@ -162,8 +196,9 @@ useHead({
                             format="webp"
                             loading="lazy"
                             quality="80"
+                            height="175"
                             :placeholder="[312, 175, 75, 5]"
-                            class="w-full object-cover [mask-image:linear-gradient(to_bottom,black_25%,transparent_100%)] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-110" />
+                            class="w-full h-[175px] object-cover [mask-image:linear-gradient(to_bottom,black_25%,transparent_100%)] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-110" />
                         <div class="absolute bottom-0 inset-x-0 p-3">
                             <h3 class="text-white font-medium truncate">
                                 <fa-icon

@@ -25,21 +25,6 @@ export default defineNuxtConfig({
     content: {
         experimental: { nativeSqlite: true },
     },
-    image: {
-        provider: 'ipx',
-        ipx: {
-            // Force standard IPX modifier syntax
-            modifiers: {
-                format: 'webp',
-                quality: '80',
-            },
-        },
-    },
-    nitro: {
-        prerender: {
-            crawlLinks: true,
-        },
-    },
     eslint: {
         config: {
             standalone: false,

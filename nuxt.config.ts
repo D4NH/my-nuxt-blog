@@ -25,9 +25,6 @@ export default defineNuxtConfig({
     content: {
         experimental: { nativeSqlite: true },
     },
-    image: {
-        provider: 'none',
-    },
     eslint: {
         config: {
             standalone: false,

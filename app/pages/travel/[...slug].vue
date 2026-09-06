@@ -93,40 +93,34 @@ useHead({
                     {{ pageData.introPost.intro }}
                 </p>
             </Intro>
-
             <div v-if="pageData.images.length">
                 <div
                     v-for="(post, index) in pageData.images"
                     :key="post.path"
                     :class="{ 'mt-12': index > 0 }">
                     <div class="relative overflow-hidden">
-                        <ClientOnly>
-                            <Carousel
-                                height="525"
-                                :items-to-show="1"
-                                slide-effect="fade">
-                                <Slide
-                                    v-for="image in post.images"
-                                    :key="image.id">
-                                    <NuxtImg
-                                        :src="image.url"
-                                        :alt="`${post.title} photo ${image.id}`"
-                                        format="webp"
-                                        loading="lazy"
-                                        :placeholder="[672, 525, 75, 5]"
-                                        class="rounded-lg [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
-                                </Slide>
-                                <template #addons>
+                        <Carousel
+                            height="525"
+                            :items-to-show="1"
+                            slide-effect="fade">
+                            <Slide
+                                v-for="image in post.images"
+                                :key="image.id">
+                                <NuxtImg
+                                    :src="image.url"
+                                    :alt="`${post.title} photo ${image.id}`"
+                                    format="webp"
+                                    loading="lazy"
+                                    :placeholder="[672, 525, 75, 5]"
+                                    class="rounded-lg [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
+                            </Slide>
+                            <template #addons>
+                                <ClientOnly>
                                     <Navigation class="m-4" />
                                     <Pagination />
-                                </template>
-                            </Carousel>
-
-                            <template #fallback>
-                                <div
-                                    class="h-[525px] w-full bg-neutral-900 rounded-lg animate-pulse" />
+                                </ClientOnly>
                             </template>
-                        </ClientOnly>
+                        </Carousel>
                         <div class="absolute bottom-0 inset-x-0 p-3">
                             <h2 class="text-xl font-bold text-white">
                                 {{ post.title }}

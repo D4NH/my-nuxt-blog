@@ -41,7 +41,7 @@ export default defineNuxtConfig({
             },
         },
     },
-    css: ['~/assets/styles/app.scss'],
+    css: ['@fortawesome/fontawesome-svg-core/styles.css', '~/assets/styles/app.scss'],
     gtag: {
         id: 'G-0MY09VW5T8',
     },

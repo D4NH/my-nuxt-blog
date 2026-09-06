@@ -4,15 +4,18 @@ import { Carousel, Slide, Navigation } from 'vue3-carousel';
 
 const route = useRoute();
 
-const { data: pageData } = await useAsyncData(`category-${route.path}`, async () => {
+// Normalize path to prevent matching failures during client-side hydration
+const cleanPath = computed(() => route.path.replace(/\/$/, '') || '/');
+
+const { data: pageData } = await useAsyncData(`category-${cleanPath.value}`, async () => {
     const introPost = await queryCollection('travel')
-        .where('path', 'LIKE', `${route.path}/%`)
+        .where('path', 'LIKE', `${cleanPath.value}/%`)
         .where('intro', 'IS NOT NULL')
         .select('category', 'intro', 'date')
         .first();
 
     const allPostsInCategory = await queryCollection('travel')
-        .where('path', 'LIKE', `${route.path}/%`)
+        .where('path', 'LIKE', `${cleanPath.value}/%`)
         .select('category', 'title', 'date', 'image', 'path')
         .order('date', 'ASC')
         .all();
@@ -30,7 +33,10 @@ const { data: pageData } = await useAsyncData(`category-${route.path}`, async ()
         return { introPost, fullPosts: [] };
     }
 
-    const singlePost = await queryCollection('travel').where('path', 'IN', paths).order('date', 'ASC').all();
+    const singlePost = await queryCollection('travel')
+        .where('path', 'IN', paths)
+        .order('date', 'ASC')
+        .all();
 
     const images = singlePost.map((post) => {
         let imageUrls: string[] = [];
@@ -40,7 +46,9 @@ const { data: pageData } = await useAsyncData(`category-${route.path}`, async ()
         } else if (post.body?.value) {
             imageUrls = post.body.value.flatMap((node: any) => {
                 const child = node?.[2];
-                return Array.isArray(child) && child[0] === 'img' && child[1]?.src ? [child[1].src] : [];
+                return Array.isArray(child) && child[0] === 'img' && child[1]?.src
+                    ? [child[1].src]
+                    : [];
             });
         }
 

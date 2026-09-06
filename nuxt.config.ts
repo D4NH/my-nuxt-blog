@@ -14,6 +14,14 @@ export default defineNuxtConfig({
     app: {
         pageTransition: { name: 'page', mode: 'out-in' },
     },
+    ssr: true,
+    nitro: {
+        preset: 'static',
+        prerender: {
+            crawlLinks: true,
+            routes: ['/'],
+        },
+    },
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
     future: {

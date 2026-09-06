@@ -8,7 +8,7 @@ import Footer from './components/Footer.vue';
         <div class="flex flex-col min-h-screen px-4 w-full max-w-2xl mx-auto">
             <Header />
             <div class="container flex-grow pb-2 mb-2">
-                <NuxtPage class="" />
+                <NuxtPage />
             </div>
             <Footer />
         </div>

@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         pageTransition: { name: 'page', mode: 'out-in' },
     },
     compatibilityDate: '2025-07-15',
-    devtools: { enabled: true },
+    devtools: { enabled: false },
     future: {
         compatibilityVersion: 4,
     },
@@ -24,6 +24,14 @@ export default defineNuxtConfig({
     },
     content: {
         experimental: { nativeSqlite: true },
+    },
+    image: {
+        provider: 'ipx',
+    },
+    nitro: {
+        prerender: {
+            crawlLinks: true, // Ensures Nitro visits pages and generates static IPX files
+        },
     },
     eslint: {
         config: {
